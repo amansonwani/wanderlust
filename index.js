@@ -104,9 +104,10 @@ app.use((err,req,res,next)=>{
     res.render("Error.ejs",{message});
 });
 app.get("/",(req,res)=>{
-res.render("/listing");
+res.redirect("/listing");
 }):
  app.listen(port,()=>{
     console.log(`server listening on port  ${port}`);
 
  });
+
