@@ -1,0 +1,134 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+      #filter{
+            display: flex;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+
+
+      }
+      .filter{
+            margin-left: 2rem;
+            text-align: center;
+            opacity: 0.7;
+      }
+      .filter:hover{
+            opacity: 1;
+            cursor: pointer;
+      }
+      .tax-switch{
+            border: 1px solid black;
+            border-radius: 1rem;
+            padding: 1rem;
+            height: 3.2rem;
+            text-align: center;
+            margin-left: 3rem;
+      }
+      .tax-info{
+            display: none;
+      }
+</style>
+<body>
+
+      <div id="filter">
+            <div class="filter">
+                  <div><i class="fa-solid fa-fire"></i></div>
+                  <p>trending</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-bed"></i></div>
+                  <p>room</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-water-ladder"></i></div>
+                  <p>amazing pools</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-igloo"></i></div>
+                  <p>cabin</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-tractor"></i></div>
+                  <p>farm</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-hotel"></i></div>
+                  <p>hotel</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-film"></i></div>
+                  <p>movie</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-square-h"></i></div>
+                  <p>hospital</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                  <p>beach</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-film"></i></div>
+                  <p>movie</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-snowflake"></i></div>
+                  <p>winter</p>
+            </div>
+            <div class="filter">
+                  <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                  <p>beach</p>
+            </div>
+            <div class="tax-switch">
+                  <div class="form-check-reverse form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                      <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+                  </div>
+            </div>
+
+      </div>
+    <!-- <h2>All Listings</h2> -->
+    
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">  
+       <% for(let listing of allListing) { %>
+       
+      <a href="/listing/<%=listing._id%>" class="listing-link">
+            <div class="card col listing-card" >
+          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing image" style="height: 20rem"/>
+           <div class="card-body">
+          <p class="card-text">
+           <b><%= listing.title%></b>  <br/>
+            <%= listing.price.toLocaleString("en-IN") %> /night  <i class="tax-info">  &nbsp; &nbsp; +18% GST</i>
+      </p>
+        </div>
+       </div>
+      </a>
+<% } %>
+</div>
+   
+
+    
+
+      <!-- <form method="GET" action="/listing/new">
+         <button>Create New Listing</button>
+      </form> -->
+    
+</body>
+
+
+<script>
+      let taxSwitch = document.getElementById("switchCheckDefault");
+      taxSwitch.addEventListener("click",()=>{
+            let taxInfo = document.getElementsByClassName("tax-info");
+            for(info of taxInfo){
+               if(info.style.display!="inline"){
+                  info.style.display ="inline";
+               }else{
+                  info.style.display = "none";
+               }
+            }
+
+      })
+</script>
