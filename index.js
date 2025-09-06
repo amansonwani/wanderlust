@@ -103,7 +103,10 @@ app.use((err,req,res,next)=>{
     // res.status(status).send(message);
     res.render("Error.ejs",{message});
 });
-
+app.get("/",(req,res)=>{
+res.render("/listing");
+}):
  app.listen(port,()=>{
     console.log(`server listening on port  ${port}`);
+
  });
